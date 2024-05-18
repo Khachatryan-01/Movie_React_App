@@ -1,14 +1,14 @@
-div{
+.formField {
     display: flex;
     flex-direction: column;
 }
 
-p{
+.text {
     font-size: 14px;
     padding: 3px;
 }
 
-input {
+.input {
     flex: 1;
     padding: 7px;
     font-size: 17px;
