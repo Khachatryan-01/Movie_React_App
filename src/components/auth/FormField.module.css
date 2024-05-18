@@ -1,0 +1,20 @@
+div{
+    display: flex;
+    flex-direction: column;
+}
+
+p{
+    font-size: 14px;
+    padding: 3px;
+}
+
+input {
+    flex: 1;
+    padding: 7px;
+    font-size: 17px;
+    outline: none;
+    background-color: #232C37;
+    border: none;
+    color: #BAC0C7;
+    border-radius: 7px;
+}
