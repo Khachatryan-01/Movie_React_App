@@ -14,7 +14,7 @@
     font-size: 17px;
     outline: none;
     background-color: #232C37;
-    border: none;
+    border: 1px solid transparent;
     color: #BAC0C7;
     border-radius: 7px;
 }
