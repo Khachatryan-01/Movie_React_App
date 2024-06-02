@@ -1,0 +1,19 @@
+.aside {
+    width: 20%;
+    height: 80%;
+    position: fixed;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.185);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.section {
+    width: 80%;
+    margin-left: 20%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+

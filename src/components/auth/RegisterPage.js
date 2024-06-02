@@ -1,8 +1,11 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import authStyle from './Auth.module.css'
 import FormField from './FormField'
 import style from './Register.module.css'
 import { Link } from 'react-router-dom'
+
+import { AuthContext } from '../../context/auth-context';
+
 
 const VALID_COLOR = 'transparent';
 const INVALID_COLOR = 'red';
@@ -10,18 +13,18 @@ const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
 
 const RegisterPage = () => {
 
+    const authCtx = useContext(AuthContext);
+
     const userNameRef = useRef();
     const birthRef = useRef();
     const passwordRef = useRef();
     const confPassRef = useRef();
 
     useEffect(() => {
-        const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-
-        if (isLoggedIn) {
-            window.location.href = 'http://localhost:3000';
+        if (authCtx.activeUser) {
+            window.location.href = '/movies';
         }
-    }, []);
+    }, [authCtx.activeUser]);
 
     return (
         <div className={authStyle.body}>
@@ -42,22 +45,13 @@ const RegisterPage = () => {
                                 password = passwordRef.current.value,
                                 confPass = confPassRef.current.value;
 
-                            const users = JSON.parse(localStorage.getItem('users')) || [];
                             const newUser = {
-                                id: users.length + 1,
                                 userName,
                                 birthDate,
                                 password
                             };
 
-                            let isValidName = true;
-                            for (const item of users) {
-                                if (item.userName === newUser.userName) {
-                                    isValidName = false;
-
-                                    break;
-                                }
-                            }
+                            const isValidName = authCtx.isValidName(newUser);
                             userNameRef.current.style.borderColor = isValidName ? VALID_COLOR : INVALID_COLOR;
 
                             const birthDateObj = new Date(birthDate);
@@ -77,10 +71,9 @@ const RegisterPage = () => {
                                 return;
                             }
 
-                            users.push(newUser);
-                            localStorage.setItem('users', JSON.stringify(users));
-                            sessionStorage.setItem('isLoggedIn', true);
-                            window.location.href = 'http://localhost:3000/';
+                            authCtx.registerUser(newUser);
+
+                            window.location.href = '/movies';
                         }}>
                         Register
                     </button>

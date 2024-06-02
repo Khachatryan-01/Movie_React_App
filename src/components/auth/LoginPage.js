@@ -1,8 +1,11 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import FormField from './FormField'
 import authStyle from './Auth.module.css'
 import style from './LoginPage.module.css'
 import { Link } from 'react-router-dom'
+
+import { AuthContext } from '../../context/auth-context';
+
 
 
 const VALID_COLOR = 'transparent';
@@ -10,16 +13,17 @@ const INVALID_COLOR = 'red';
 
 const LoginPage = () => {
 
+    const authCtx = useContext(AuthContext);
+
     const userNameRef = useRef();
     const passwordRef = useRef();
 
     useEffect(() => {
-        const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-
-        if (isLoggedIn) {
-            window.location.href = 'http://localhost:3000';
+        if (authCtx.activeUser) {
+            window.location.href = '/movies';
         }
-    }, []);
+    }, [authCtx.activeUser]);
+
 
     return (
         <div className={authStyle.body}>
@@ -36,18 +40,15 @@ const LoginPage = () => {
                             const userName = userNameRef.current.value;
                             const password = passwordRef.current.value;
 
-                            const users = JSON.parse(localStorage.getItem('users'));
+                            //
+                            // const users = JSON.parse(localStorage.getItem('users')); 
+                            // const user = users.find((user) => user.userName === userName && user.password === password);
+                            //
+                            const isLoggedIn = authCtx.loginUser(userName, password)
 
-                            const isValid = users.some((user) => user.userName === userName && user.password === password);
-
-                            const color = isValid ? VALID_COLOR : INVALID_COLOR;
+                            const color = isLoggedIn ? VALID_COLOR : INVALID_COLOR;
                             userNameRef.current.style.borderColor = color;
                             passwordRef.current.style.borderColor = color;
-
-                            if (isValid) {
-                                sessionStorage.setItem('isLoggedIn', true);
-                                window.location.href = 'http://localhost:3000/';
-                            }
                         }}
                     >
                         Log in

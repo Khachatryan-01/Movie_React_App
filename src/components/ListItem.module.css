@@ -1,0 +1,23 @@
+.movieItem {
+    width: 450px;
+    height: 650px;
+    margin: 20px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.185);
+    border-radius: 15px;
+}
+
+.movieItem img {
+    width: 85%;
+    height: 80%;
+}
+
+.movieItem h2{
+    margin-top: 20px;
+    color: white;
+}
