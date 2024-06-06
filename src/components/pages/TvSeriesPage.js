@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { MOVIE_API } from '../defines'
 import List from '../List'
 import style from './Page.module.css'

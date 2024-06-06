@@ -1,6 +1,9 @@
 export const MOVIE_API = {
     URL: 'https://api.themoviedb.org/3/discover/',
     IMG_URL: 'https://image.tmdb.org/t/p/w500',
+    LANG_URL: 'https://api.themoviedb.org/3/configuration/languages',
+    MOVIE_GENER_URL: 'https://api.themoviedb.org/3/genre/movie/list?language=en',
+    TV_GENER_URL: 'https://api.themoviedb.org/3/genre/tv/list?language=en',
     ACTIONS: {
         REQ_OPTIONS: {
             method: 'GET',

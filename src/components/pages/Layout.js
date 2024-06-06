@@ -21,7 +21,7 @@ const Layout = () => {
             <header className={style.header}>
                 <div className={style.username}>
                     <img src='/images/person.png' alt='Profile_image' />
-                    <span>{activeUser.userName}</span>
+                    {activeUser ? <span>{activeUser.userName}</span> : null}
                 </div>
                 <nav className={style.nav}>
                     <NavLink to='/movies'>Movies</NavLink>

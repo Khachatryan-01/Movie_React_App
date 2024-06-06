@@ -1,0 +1,29 @@
+.ratingContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.ratingHeadline {
+    margin: 0 80px;
+}
+
+.fa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fa-star {
+    display: flex;
+    flex-direction: row;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.checked {
+    color: orange;
+}

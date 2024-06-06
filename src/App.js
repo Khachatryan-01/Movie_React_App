@@ -9,17 +9,18 @@ import Detail from './components/pages/Detail'
 import { MOVIE_API } from './components/defines'
 
 const App = () => {
-	
+
 	return (
-			<Routes>
-				<Route path="/" element={<Layout />}>
-					<Route path='movies' element={<MoviePage />} />
-					<Route path='tvSeries' element={<TvSeriesPage />} />
-					<Route path='movies/:id' element={<Detail url={MOVIE_API.getActionUrl(MOVIE_API.ACTIONS.MOVIE)} requestOptions={MOVIE_API.ACTIONS.REQ_OPTIONS} responseField={'results'} />} />
-				</Route>
-				<Route path='/register' element={<RegisterPage />} />
-				<Route path='/login' element={<LoginPage />} />
-			</Routes>
+		<Routes>
+			<Route path="/" element={<Layout />}>
+				<Route path='movies' element={<MoviePage />} />
+				<Route path='tvSeries' element={<TvSeriesPage />} />
+				<Route path='movies/:id' element={<Detail url={MOVIE_API.getActionUrl(MOVIE_API.ACTIONS.MOVIE)} langUrl={MOVIE_API.LANG_URL} generUrl={MOVIE_API.MOVIE_GENER_URL} requestOptions={MOVIE_API.ACTIONS.REQ_OPTIONS} responseField={'results'} />} />
+				<Route path='tvSeries/:id' element={<Detail url={MOVIE_API.getActionUrl(MOVIE_API.ACTIONS.TV_SERIES)} langUrl={MOVIE_API.LANG_URL} generUrl={MOVIE_API.TV_GENER_URL} requestOptions={MOVIE_API.ACTIONS.REQ_OPTIONS} responseField={'results'} />} />
+			</Route>
+			<Route path='/register' element={<RegisterPage />} />
+			<Route path='/login' element={<LoginPage />} />
+		</Routes>
 	)
 }
 

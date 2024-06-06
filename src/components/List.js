@@ -11,7 +11,7 @@ const List = ({ url, requestOptions, responseField }) => {
             .then(response => response.json())
             .then(data => setListData(responseField ? data[responseField] : data))
             .catch(err => console.error(err));
-    }, []);
+    }, [url, requestOptions, responseField]);
 
     return (
         <>

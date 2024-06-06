@@ -8,8 +8,6 @@ const AuthContext = React.createContext({
 });
 
 const AuthProvider = ({ children }) => {
-    //taza state ira function ov vor karananq popoxenq arjeqy
-    //setItem ani functionov usery
 
     const [users, setUsers] = useState(JSON.parse(localStorage.getItem('users')) || []);
     const [activeUser, setActiveUser] = useState(JSON.parse(sessionStorage.getItem('activeUser')) || null)
@@ -56,6 +54,18 @@ const AuthProvider = ({ children }) => {
 
 
     return (
+        // <AuthContext.Consumer>
+        // 	{(authCtx) => {
+
+        // 		console.log(authCtx);
+        // 		return (
+        // 			<div className={style.wrapper}>
+        // 				<h2>{detailItem?.title}</h2>
+        // 			</div>
+        // 		)
+        // 	}}
+        // </AuthContext.Consumer>
+        
         <AuthContext.Provider value={{
             users: users,
             activeUser: activeUser,
